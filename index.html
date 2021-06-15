@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <iframe id="ifr"></iframe>
+  <button id="btn">下载</button>
+  <script>
+    var b = ''
+    btn.onclick = function() {
+DownLoad('http://192.168.8.253:3333/aa','ddd')
+
+    }
+function DownLoad(url, name) {
+  var a = document.createElement("a");
+  a.id = "saveClick";
+  a.style.visibility = "hidden";
+  a.href = URL.createObjectURL(b);
+  a.download = ".pdf";
+  var e = new MouseEvent("click", (true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null));
+  a.dispatchEvent(e);
+    }
+
+const a = new XMLHttpRequest()
+a.open('get', 'http://192.168.8.253:3333/aa')
+a.responseType = 'arraybuffer'
+a.onreadystatechange = function(res) {
+  if(a.readyState === 4) {
+    if(a.status === 200) {
+      b = new Blob([a.response], { type: "application/pdf;" });
+      ifr.src = URL.createObjectURL(b)
+    }
+  }
+}
+a.send();
+
+  </script>
+</body>
+</html>
